@@ -1,43 +1,149 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD de Usuários</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        .container {
-            margin-bottom: 20px;
-        }
-        input, button {
-            margin: 5px;
-            padding: 10px;
-        }
-    </style>
+    <title>Usuários</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>CRUD de Usuários</h1>
+    <section class="container">
+        
+      <div class="sidebar">
+        <div class="menu-btn">
+          <i class="ph-bold ph-caret-left"></i>
+        </div>
+        <div class="head">
+          <div class="user-img">
+            <img src="user.jpeg" alt="Mulher negra de social, sorrindo com fundo laranja" />
+          </div>
+          <div class="user-details">
+            <p class="title">Web developer</p>
+            <p class="name">Lilian Carvalho</p>
+          </div>
+        </div>
+        <div class="nav">
+          <div class="menu">
+            <p class="title">Principal</p>
+            <ul>
+              <li>
+                <a href="#">
+                  <i class="icon ph-bold ph-house-simple"></i>
+                  <span class="text">Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon ph-bold ph-user"></i>
+                  <span class="text">Audiência</span>
+                  <i class="arrow ph-bold ph-caret-down"></i>
+                </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="#">
+                      <span class="text">Usuários</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="text">Inscritos</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="active">
+                <a href="#">
+                  <i class="icon ph-bold ph-file-text"></i>
+                  <span class="text">Posts</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon ph-bold ph-calendar-blank"></i>
+                  <span class="text">Horários</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon ph-bold ph-chart-bar"></i>
+                  <span class="text">Renda</span>
+                  <i class="arrow ph-bold ph-caret-down"></i>
+                </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="#">
+                      <span class="text">Ganhos</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="text">Fundos</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="text">Declínios</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="text">Pagamentos</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="menu">
+            <p class="title">Ajustes</p>
+            <ul>
+              <li>
+                <a href="#">
+                  <i class="icon ph-bold ph-gear"></i>
+                  <span class="text">Ajustes</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="menu">
+          <p class="title">Conta</p>
+          <ul>
+            <li>
+              <a href="#">
+                <i class="icon ph-bold ph-info"></i>
+                <span class="text">Ajuda</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon ph-bold ph-sign-out"></i>
+                <span class="text">Sair</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-    <div class="container">
-        <h2>Cadastrar Usuário</h2>
-        <input type="text" id="userId" placeholder="User ID" required>
-        <input type="text" id="name" placeholder="Nome" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <button id="createUserBtn">Cadastrar</button>
-    </div>
+      <div class="credits">
+        <div class="container-inputs">
+            <h6>Cadastrar Usuário</h6>
+            <input type="text" id="userId" placeholder="ID do usuário" required>
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <button id="createUserBtn">Cadastrar</button>
+        </div>
+    
+        <div class="container-lister">
+            <h6>Listar Usuários</h6>
+            <button id="fetchUsersBtn">Buscar Usuários</button>
+            <div id="usersList"></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="container">
-        <h2>Listar Usuários</h2>
-        <button id="fetchUsersBtn">Buscar Usuários</button>
-        <div id="usersList"></div>
-    </div>
-
+    <!-- Config integração -->
     <script>
         const apiUrl = 'https://xar0jfon17.execute-api.us-east-1.amazonaws.com'; 
 
@@ -79,5 +185,13 @@
             }
         });
     </script>
-</body>
+
+    <!-- Jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+      integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
