@@ -1,0 +1,43 @@
+# Dependências do Node.js
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretórios do sistema
+.DS_Store
+Thumbs.db
+
+# Configurações do ambiente
+.env
+
+# Compilação e saída temporária
+dist/
+build/
+.tmp/
+
+# Cache de IDEs e editores
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Arquivos de cobertura de testes
+coverage/
+
+# Arquivos gerados pelo sistema operacional
+*.swp
+*.swo
+
+# Específicos de Terraform
+.terraform/
+terraform.tfstate*
+*.tfstate.backup
+crash.log
+override.tf
+override.tf.json

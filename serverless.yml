@@ -1,0 +1,57 @@
+org: lilicarvalho01
+app: serverless-crud
+service: serverless-crud
+frameworkVersion: "4"
+
+custom:
+  tableName: "users-table-${sls:stage}"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [UsersTable, Arn]
+  environment:
+    USERS_TABLE: ${self:custom.tableName}
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi:
+          method: "*"
+          path: "/users"
+          cors:
+            allowedOrigins:
+              - http://127.0.0.1:5500
+            allowedHeaders:
+              - Content-Type
+            allowedMethods:
+              - OPTIONS
+              - GET
+              - POST
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.tableName}
