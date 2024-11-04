@@ -2,10 +2,10 @@
 Aqui, eu estou aplicando os conteúdos teóricos sobre AWS na prática.
 
 ## ⚙ Funcionalidades 
-- CRUD feito com Node.js para lidar com usuários<br>
-- Usando diversos serviços pela primeira vez <br>
-- Algumas tecnologias usadas: Lambda, API Gateway, Serverless e Terraform  <br>
-- Projeto objetivo <br><br>
+- CRUD feito com Node.js para lidar com usuários.<br>
+- Usando diversos serviços pela primeira vez. <br>
+- Algumas tecnologias usadas: Lambda, API Gateway, Serverless e Terraform.  <br>
+- Projeto objetivo. <br><br>
 
 ## 🖥️ Tecnologias utilizadas:<br>
 ###
